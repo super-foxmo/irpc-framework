@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="irpc-framework-interface" />
+        <module name="irpc-framework-common" />
+        <module name="irpc-framework-core" />
+        <module name="irpc-framework-provider" />
+        <module name="irpc-framework-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="irpc-framework-protocol" target="8" />
+      <module name="irpc-framework-rpc" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
