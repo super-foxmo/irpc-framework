@@ -3,6 +3,7 @@ package com.foxmo.rpc.proxy;
 import com.foxmo.rpc.Invocation;
 import com.foxmo.rpc.RPCResponse;
 import com.foxmo.rpc.protocol.URL;
+import com.foxmo.rpc.protocol.netty.NettyProtocol;
 import com.foxmo.rpc.protocol.socket.SocketClient;
 import com.foxmo.rpc.protocol.socket.SocketProtocol;
 import lombok.AllArgsConstructor;
@@ -29,9 +30,14 @@ public class ClientProxyFactory implements InvocationHandler {
                 .methodName(method.getName())
                 .params(args)
                 .paramsTypes(method.getParameterTypes()).build();
-        // 数据传输
-        SocketProtocol socketProtocol = new SocketProtocol();
-        RPCResponse response = socketProtocol.send(url, invocation);
+
+        // Socket协议数据传输
+//        SocketProtocol socketProtocol = new SocketProtocol();
+//        RPCResponse response = socketProtocol.send(url, invocation);
+        // Netty协议数据传输
+        NettyProtocol nettyProtocol = new NettyProtocol();
+        RPCResponse response = nettyProtocol.send(url, invocation);
+
         //System.out.println(response);
         return response.getData();
     }

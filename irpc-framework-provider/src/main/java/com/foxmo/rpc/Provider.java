@@ -2,6 +2,7 @@ package com.foxmo.rpc;
 
 import com.foxmo.rpc.entity.User;
 import com.foxmo.rpc.protocol.URL;
+import com.foxmo.rpc.protocol.netty.NettyProtocol;
 import com.foxmo.rpc.protocol.socket.SocketProtocol;
 import com.foxmo.rpc.register.LocalRegister;
 import com.foxmo.rpc.service.BlogServiceImpl;
@@ -21,7 +22,12 @@ public class Provider {
         LocalRegister.regist(UserServiceImpl.class);
         LocalRegister.regist(BlogServiceImpl.class);
 
-        SocketProtocol socketProtocol = new SocketProtocol();
-        socketProtocol.start(new URL("127.0.0.1", 8899));
+        // Socket协议启动服务器
+//        SocketProtocol socketProtocol = new SocketProtocol();
+//        socketProtocol.start(new URL("127.0.0.1", 8899));
+
+        // Netty协议启动服务器
+        NettyProtocol nettyProtocol = new NettyProtocol();
+        nettyProtocol.start(new URL("127.0.0.1",8899));
     }
 }
