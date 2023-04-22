@@ -1,6 +1,6 @@
 package com.foxmo.rpc.protocol.socket;
 
-import com.foxmo.rpc.Invocation;
+import com.foxmo.rpc.RPCRequest;
 import com.foxmo.rpc.RPCResponse;
 import com.foxmo.rpc.protocol.Protocol;
 import com.foxmo.rpc.protocol.URL;
@@ -17,7 +17,7 @@ public class SocketProtocol implements Protocol {
     }
 
     @Override
-    public RPCResponse send(URL url, Invocation invocation) {
-        return SocketClient.sendRequest(url.getHostname(),url.getPort(),invocation);
+    public RPCResponse send(URL url, RPCRequest RPCRequest) {
+        return SocketClient.sendRequest(url.getHostname(),url.getPort(), RPCRequest);
     }
 }

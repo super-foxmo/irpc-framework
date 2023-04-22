@@ -1,6 +1,6 @@
 package com.foxmo.rpc.protocol.netty;
 
-import com.foxmo.rpc.Invocation;
+import com.foxmo.rpc.RPCRequest;
 import com.foxmo.rpc.RPCResponse;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -32,12 +32,12 @@ public class NettyClient {
     /**
      * 这里需要操作一下，因为netty的传输都是异步的，你发送request，会立刻返回， 而不是想要的相应的response
      */
-    public RPCResponse sendRequest(Invocation invocation) {
+    public RPCResponse sendRequest(RPCRequest RPCRequest) {
         try {
             ChannelFuture channelFuture  = bootstrap.connect(host, port).sync();
             Channel channel = channelFuture.channel();
             // 发送数据
-            channel.writeAndFlush(invocation);
+            channel.writeAndFlush(RPCRequest);
             channel.closeFuture().sync();
             // 阻塞的获得结果，通过给channel设计别名，获取特定名字下的channel中的内容（这个在hanlder中设置）
             // AttributeKey是，线程隔离的，不会由线程安全问题。

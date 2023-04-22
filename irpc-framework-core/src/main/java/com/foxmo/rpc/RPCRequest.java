@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Invocation implements Serializable {
+public class RPCRequest implements Serializable {
     // 服务类名，客户端只知道接口名，在服务端中用接口名指向实现类
     private String interfaceName;
     // 方法名

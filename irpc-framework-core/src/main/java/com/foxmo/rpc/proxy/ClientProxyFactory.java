@@ -1,11 +1,9 @@
 package com.foxmo.rpc.proxy;
 
-import com.foxmo.rpc.Invocation;
+import com.foxmo.rpc.RPCRequest;
 import com.foxmo.rpc.RPCResponse;
 import com.foxmo.rpc.protocol.URL;
 import com.foxmo.rpc.protocol.netty.NettyProtocol;
-import com.foxmo.rpc.protocol.socket.SocketClient;
-import com.foxmo.rpc.protocol.socket.SocketProtocol;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +23,7 @@ public class ClientProxyFactory implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // Invocation的构建，使用了lombok中的builder，代码简洁
-        Invocation invocation = Invocation.builder()
+        RPCRequest RPCRequest = com.foxmo.rpc.RPCRequest.builder()
                 .interfaceName(method.getDeclaringClass().getName())
                 .methodName(method.getName())
                 .params(args)
@@ -36,7 +34,8 @@ public class ClientProxyFactory implements InvocationHandler {
 //        RPCResponse response = socketProtocol.send(url, invocation);
         // Netty协议数据传输
         NettyProtocol nettyProtocol = new NettyProtocol();
-        RPCResponse response = nettyProtocol.send(url, invocation);
+        //服务调用
+        RPCResponse response = nettyProtocol.send(url, RPCRequest);
 
         //System.out.println(response);
         return response.getData();

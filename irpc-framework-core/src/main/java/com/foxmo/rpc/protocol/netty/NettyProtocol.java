@@ -1,6 +1,6 @@
 package com.foxmo.rpc.protocol.netty;
 
-import com.foxmo.rpc.Invocation;
+import com.foxmo.rpc.RPCRequest;
 import com.foxmo.rpc.RPCResponse;
 import com.foxmo.rpc.protocol.Protocol;
 import com.foxmo.rpc.protocol.URL;
@@ -13,8 +13,8 @@ public class NettyProtocol implements Protocol {
     }
 
     @Override
-    public RPCResponse send(URL url, Invocation invocation) {
+    public RPCResponse send(URL url, RPCRequest RPCRequest) {
         NettyClient nettyClient = new NettyClient(url.getHostname(),url.getPort());
-        return nettyClient.sendRequest(invocation);
+        return nettyClient.sendRequest(RPCRequest);
     }
 }
