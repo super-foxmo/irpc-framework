@@ -15,8 +15,8 @@ public class HttpProtocol implements Protocol {
     }
 
     @Override
-    public RPCResponse send(URL url, RPCRequest RPCRequest) {
+    public RPCResponse send(RPCRequest RPCRequest) {
         HttpClient httpClient = new HttpClient();
-        return httpClient.send(url.getHostname(), url.getPort(), RPCRequest);
+        return httpClient.send(RPCRequest);
     }
 }

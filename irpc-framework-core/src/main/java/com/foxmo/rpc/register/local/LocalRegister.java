@@ -1,4 +1,4 @@
-package com.foxmo.rpc.register;
+package com.foxmo.rpc.register.local;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ public class LocalRegister {
 
     private static Map<String, Class> map = new HashMap<>();
 
-    public static void regist(Class implClass) {
+    public static void register(Class implClass) {
         Class<?>[] interfaces = implClass.getInterfaces();
 
         for(Class clazz : interfaces){

@@ -1,7 +1,6 @@
 package com.foxmo.rpc.protocol.netty;
 
 import com.foxmo.rpc.protocol.RPCServer;
-import com.foxmo.rpc.register.LocalRegister;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.nio.NioEventLoopGroup;

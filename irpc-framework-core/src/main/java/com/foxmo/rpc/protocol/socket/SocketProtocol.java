@@ -4,8 +4,10 @@ import com.foxmo.rpc.RPCRequest;
 import com.foxmo.rpc.RPCResponse;
 import com.foxmo.rpc.protocol.Protocol;
 import com.foxmo.rpc.protocol.URL;
+import com.foxmo.rpc.register.remote.ServiceRegister;
 
 public class SocketProtocol implements Protocol {
+
     @Override
     public void start(URL url) {
 //        SocketServer socketServer = new SocketServer();
@@ -17,7 +19,7 @@ public class SocketProtocol implements Protocol {
     }
 
     @Override
-    public RPCResponse send(URL url, RPCRequest RPCRequest) {
-        return SocketClient.sendRequest(url.getHostname(),url.getPort(), RPCRequest);
+    public RPCResponse send(RPCRequest RPCRequest) {
+        return SocketClient.sendRequest(RPCRequest);
     }
 }

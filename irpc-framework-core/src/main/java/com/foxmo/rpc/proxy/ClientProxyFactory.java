@@ -14,10 +14,9 @@ import java.lang.reflect.Proxy;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class ClientProxyFactory implements InvocationHandler {
-    // 传入参数Service接口的class对象，反射封装成一个request
-    private URL url;
+//    // 传入参数Service接口的class对象，反射封装成一个request
+//    private URL url;
 
     // jdk 动态代理， 每一次代理对象调用方法，会经过此方法增强（反射获取request对象，socket发送至客户端）
     @Override
@@ -35,7 +34,7 @@ public class ClientProxyFactory implements InvocationHandler {
         // Netty协议数据传输
         NettyProtocol nettyProtocol = new NettyProtocol();
         //服务调用
-        RPCResponse response = nettyProtocol.send(url, RPCRequest);
+        RPCResponse response = nettyProtocol.send(RPCRequest);
 
         //System.out.println(response);
         return response.getData();

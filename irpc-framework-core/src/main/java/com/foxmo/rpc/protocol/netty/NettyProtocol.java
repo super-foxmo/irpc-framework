@@ -13,8 +13,8 @@ public class NettyProtocol implements Protocol {
     }
 
     @Override
-    public RPCResponse send(URL url, RPCRequest RPCRequest) {
-        NettyClient nettyClient = new NettyClient(url.getHostname(),url.getPort());
+    public RPCResponse send(RPCRequest RPCRequest) {
+        NettyClient nettyClient = new NettyClient();
         return nettyClient.sendRequest(RPCRequest);
     }
 }

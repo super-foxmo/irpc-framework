@@ -7,7 +7,7 @@ import com.foxmo.rpc.proxy.ClientProxyFactory;
 
 public class Consumer {
     public static void main(String[] args) {
-        ClientProxyFactory clientProxy = new ClientProxyFactory(new URL("127.0.0.1", 8899));
+        ClientProxyFactory clientProxy = new ClientProxyFactory();
 
         UserService userService = clientProxy.getProxy(UserService.class);
         // 服务UserService的方法1

@@ -2,7 +2,7 @@ package com.foxmo.rpc.protocol.netty;
 
 import com.foxmo.rpc.RPCRequest;
 import com.foxmo.rpc.RPCResponse;
-import com.foxmo.rpc.register.LocalRegister;
+import com.foxmo.rpc.register.local.LocalRegister;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.AllArgsConstructor;
@@ -36,7 +36,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<RPCRequest> 
     RPCResponse getResponse(RPCRequest RPCRequest) {
         // 得到服务名
         String interfaceName = RPCRequest.getInterfaceName();
-        // 得到服务端相应服务实现类
+        // 从本地注册中心得到服务端相应服务实现类
         Class clazz = LocalRegister.get(interfaceName);
 //        Object service = serviceProvider.getService(interfaceName);
         // 反射调用方法

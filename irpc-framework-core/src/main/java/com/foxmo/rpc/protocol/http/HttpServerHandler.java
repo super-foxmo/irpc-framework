@@ -1,7 +1,7 @@
 package com.foxmo.rpc.protocol.http;
 
 import com.foxmo.rpc.RPCRequest;
-import com.foxmo.rpc.register.LocalRegister;
+import com.foxmo.rpc.register.local.LocalRegister;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;

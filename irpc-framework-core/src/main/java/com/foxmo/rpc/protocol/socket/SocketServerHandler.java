@@ -2,7 +2,7 @@ package com.foxmo.rpc.protocol.socket;
 
 import com.foxmo.rpc.RPCRequest;
 import com.foxmo.rpc.RPCResponse;
-import com.foxmo.rpc.register.LocalRegister;
+import com.foxmo.rpc.register.local.LocalRegister;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
